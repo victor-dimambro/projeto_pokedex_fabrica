@@ -1,8 +1,13 @@
 import { PokerChip, MagnifyingGlass, Hash } from "phosphor-react"
 import { useEffect, useState } from "react"
+import { Card } from "./components/Card";
 
+interface IPokemon{
+  name: string;
+
+}
 function App() {
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState<IPokemon[]>([]);
 
   async function fetchData() {
     const data = await
@@ -52,11 +57,16 @@ function App() {
        </header>
        
        <main className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 pt-12 gap-3 mx-auto">
-         {pokemons.map((item) => (
-           <p key={item.name}>{item.name} </p> 
+         {pokemons.map((item, index) => (
+            <Card 
+            name= {item.name}
+            position= {index+1}
+        />
          ))}
        </main>
       
+        
+          
       </div>
 
   
