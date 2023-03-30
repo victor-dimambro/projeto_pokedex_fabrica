@@ -8,8 +8,8 @@ function App() {
     const data = await
     fetch('https://pokeapi.co/api/v2/pokemon?limit=120')
      .then((response) => response.json())
-     
-     setPokemons(data);
+     console.log(data.results)
+     setPokemons(data.results);
 
   }
 
@@ -50,10 +50,10 @@ function App() {
        
        </div>
        </header>
-
+       
        <main className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 pt-12 gap-3 mx-auto">
          {pokemons.map((item) => (
-           <p key={item.name}>{item.name} </p>
+           <p key={item.name}>{item.name} </p> 
          ))}
        </main>
       
